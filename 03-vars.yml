@@ -28,6 +28,8 @@
 
 - name: demo on task level variable
   hosts: all
+  vars:
+    URL_PLAY:play.example.com
   roles:
     -sample
 
