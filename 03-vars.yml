@@ -32,6 +32,7 @@
     URL_PLAY:play.example.com
   roles:
     -sample
+
 - name: demo register variables
   hosts: all
   tasks:
