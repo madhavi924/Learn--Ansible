@@ -26,3 +26,8 @@
       vars:
         URL: tasks.example.com
 
+- name: demo on task level variable
+  hosts: all
+  roles:
+    -sample
+
