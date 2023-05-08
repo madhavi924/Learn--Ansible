@@ -20,7 +20,7 @@
 - name: demo on task level variable
   hosts: all
   tasks:
-    -name: print URL
+    - name: print URL
     ansible.builtin.debug:
       msg: URL - {{URL}}
       vars:
@@ -32,7 +32,7 @@
     URL_PLAY:play.example.com
   roles:
     -sample
-- name: demo register variable
+- name: demo register variables
   hosts: all
   tasks:
     - name: Run uptime shell command
@@ -40,4 +40,4 @@
       register: output
       - name: Print output
         ansible.builtin.debug:
-          msg: '{{ output }}'
+          msg: '{{ output.stdout }}'
