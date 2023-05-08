@@ -1,4 +1,4 @@
-- name: demo on ply level variable
+- name: demo on play level variable
   hosts: all
   vars:
   URL: play.example.com
@@ -6,4 +6,14 @@
     -name: print URL
     ansible.builtin.debug:
       msg: URL - {{URL}}
+
+
+- name: demo on task level variable
+  hosts: all
+  tasks:
+    -name: print URL
+    ansible.builtin.debug:
+      msg: URL - {{URL}}
+      vars:
+        URL: play.example.com
 
