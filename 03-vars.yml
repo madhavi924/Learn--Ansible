@@ -3,42 +3,54 @@
   vars:
   URL: play.example.com
   tasks:
-    -name: print URL
-    ansible.builtin.debug:
-      msg: URL - {{URL}}
+    - name: print URL
+      ansible.builtin.debug:
+      msg: URL - {{ URL }}
 
 
 - name: Load vars from a file
   hosts: all
   vars_files:
-    -ex-vars.yml
+     - ex-vars.yml
   tasks:
-    -name: print URL
-    ansible.builtin.debug:
-      msg: URL - {{URL}}
+    - name: print URL
+      ansible.builtin.debug:
+      msg: URL - {{ URL }}
 
 - name: demo on task level variable
   hosts: all
   tasks:
     - name: print URL
-    ansible.builtin.debug:
-      msg: URL - {{URL}}
+      ansible.builtin.debug:
+      msg: URL - {{ URL }}
       vars:
         URL: tasks.example.com
 
 - name: demo on task level variable
   hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL - {{ URL }}
   vars:
-    URL_PLAY:play.example.com
+    URL: tasks.example.com
+
+
+- name: variable from roles
+  hosts: all
+  vars:
+    URL_play:play.example.com
   roles:
-    -sample
+      - sample
+
+
 
 - name: demo register variables
   hosts: all
   tasks:
-    - name: Run uptime shell command
-      ansible.builtin.shell: uptime
-      register: output
-      - name: Print output
-        ansible.builtin.debug:
-          msg: '{{ output.stdout }}'
+- name: Run uptime shell command
+  ansible.builtin.shell: uptime
+  register: output
+- name: Print output
+  ansible.builtin.debug:
+  msg: '{{ output.stdout }}'
