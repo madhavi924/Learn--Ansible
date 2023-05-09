@@ -3,9 +3,10 @@
   vars:
   URL: play.example.com
   tasks:
-    - name: print URL
-      ansible.builtin.debug:
-      msg: URL - {{ URL }}
+- name: print URL
+  ansible.builtin.debug:
+  msg: URL - {{ URL }}
+
 - name: Load vars from a file
   hosts: all
   vars_files:
