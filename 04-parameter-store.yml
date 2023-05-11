@@ -1,4 +1,4 @@
-- name: Print parameter
+- name: Print a parameter
   hosts: localhost
   connection: local
   tasks:
